@@ -1,213 +1,232 @@
-//                                      █         ██        ▄▀▀▀▀▀▀▀▀▀▀█▀▀▀▀▀▀▀▀█▀▀▀▀▀▀▀▀▀▀█
-//                                      █        █ █      ▄▀            ▀▄      █         █
-//                                      █       █  █    ▄▀                ▀▄    █        █
-//                                      █      █   █   █                    █   █       █
-//                                      █     █    █   █                    █   █      █
-//                                      █    █     █   █                    █   █  ▀▀▀█▀▀▀▀
-//                                      █   █ █    █   █                    █   █    █
-//                                      █  █   █   █   █                    █   █   █
-//                                      █ █     █  █    ▀▄                ▄▀    █  █
-//                                      ██       █ █      ▀▄            ▄▀      █ █
-//                                      █         ██▄▄▄▄▄▄▄▄█▄▄▄▄▄▄▄▄▄▄▀        ██▄▄▄▄▄▄▄▄▄▄
-//
-// ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+// Copyright (c) 2022 The ZMK Contributors
+// SPDX-License-Identifier: MIT
 
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/mouse.h>
 
-/ {
-    behaviors {
-        tab_esc_ctrl: tab_esc_ctrl {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAB_ESC_CTRL";
-            #binding-cells = <0>;
-            bindings =
-                <&mt LCTRL ESC>,
-                <&kp TAB>;
-        };
-        gqt: global-quick-tap {
-            compatible = "zmk,behavior-hold-tap";
-            label = "GLOBAL_QUICK_TAP";
-            bindings =
-                <&kp>,
-                <&kp>;
+#define Work     0
+#define Arrows   1
+#define Numbers  2
+#define Devices  3
+#define Left     4
 
-            #binding-cells = <2>;
-            quick-tap-ms = <200>;
-            tapping-term-ms = <250>;
-            global-quick-tap;
-        };
-        ltq: ltq {
-            compatible = "zmk,behavior-hold-tap";
-            label = "LTQ";
-            bindings =
-                <&mo>,
-                <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <250>;
-            global-quick-tap;
-            quick-tap-ms = <200>;
-        };
-    };
-
+/ { 
     combos {
         compatible = "zmk,combos";
-
-        left_parenthesis {
-            bindings = <&kp LEFT_PARENTHESIS>;
-            key-positions = <3 4>;
-            timeout-ms = <50>;
+        caps {
+            timeout-ms = <30>;
+            key-positions = <14 15>;
+            bindings = <&kp CAPS>;
         };
-
-        right_parenthesis {
-            bindings = <&kp RIGHT_PARENTHESIS>;
-            key-positions = <5 6>;
-            timeout-ms = <50>;
+        esc {
+            timeout-ms = <30>;
+            key-positions = <1 2>;
+            bindings = <&kp ESC>;    
         };
-
-        left_bracket {
-            bindings = <&kp LEFT_BRACKET>;
+        numpad_left {
+            timeout-ms = <30>;
+            key-positions = <1 2 3>;
+            bindings = <&to 4>;    
+        };
+        default {
+            timeout-ms = <30>;
+            key-positions = <1 3>;
+            bindings = <&to 0>;    
+        };
+        clicking {
+            timeout-ms = <50>;
+            key-positions = <11 12 13>;
+            bindings = <&kp LG(LA(X))>;
+        };
+        scrolling {
+            timeout-ms = <50>;
+            key-positions = <16 17 18>;
+            bindings = <&kp LG(LS(J))>;
+        };
+        nihongo {
+            timeout-ms = <50>;
+            key-positions = <7 8>;
+            bindings = <&kp LANG1>;
+        };
+        english {
+            timeout-ms = <50>;
+            key-positions = <17 18>;
+            bindings = <&kp LANG2>;
+        };
+        apps {
+            timeout-ms = <50>;
+            key-positions = <3 6>;
+            bindings = <&kp LC(UP)>;
+        };
+        windows {
+            timeout-ms = <50>;
+            key-positions = <1 8>;
+            bindings = <&kp LC(DOWN)>;
+        };
+        combo_BACK {
+            timeout-ms = <30>;
+            key-positions = <11 13>;
+            bindings = <&kp LG(LBKT)>;
+        };
+        combo_FORWARD {
+            timeout-ms = <30>;
+            key-positions = <11 12>;
+            bindings = <&kp LG(RBKT)>;
+        };
+        combo_undo {
+            timeout-ms = <30>;
+            key-positions = <12 13>;
+            bindings = <&kp LG(Z)>;
+        };
+        win_left {
+            timeout-ms = <50>;
             key-positions = <13 14>;
-            timeout-ms = <50>;
+            bindings = <&kp LC(RIGHT)>;
         };
-
-        right_bracket {
-            bindings = <&kp RIGHT_BRACKET>;
-            key-positions = <16 15>;
+        win_right {
             timeout-ms = <50>;
+            key-positions = <15 16>;
+            bindings = <&kp LC(LEFT)>;
         };
-
-        left_brace {
-            bindings = <&kp LEFT_BRACE>;
+        spotlight {
+            timeout-ms = <30>;
+            key-positions = <2 7>;
+            bindings = <&kp LG(SPACE)>;
+        };
+        combo_COLON {
+            timeout-ms = <30>;
+            key-positions = <12 17>;
+            bindings = <&kp COLON>;
+        };
+        combo_SEMI {
+            timeout-ms = <30>;
+            key-positions = <11 18>;
+            bindings = <&kp SEMI>;
+        };
+        combo_MoveToLeftTab {
+            timeout-ms = <50>;
+            key-positions = <21 22>;
+            bindings = <&kp LG(LA(LEFT))>;
+        };
+        app_swap {
+            timeout-ms = <30>;
+            key-positions = <22 23>;
+            bindings = <&kp LG(TAB)>;
+        };
+	    window_swap {
+            timeout-ms = <30>;
+            key-positions = <21 22 23>;
+            bindings = <&kp LG(GRAVE)>;
+        };
+	    combo_MoveToRightTab {
+            timeout-ms = <50>;
             key-positions = <23 24>;
+            bindings = <&kp LG(LA(RIGHT))>;
+        };
+	    combo_HOME {
             timeout-ms = <50>;
+            key-positions = <26 27>;
+            bindings = <&kp HOME>;
         };
-
-        new_combo {
-            bindings = <&kp RIGHT_BRACE>;
-            key-positions = <25 26>;
+	    combo_END {
             timeout-ms = <50>;
+            key-positions = <27 28>;
+            bindings = <&kp END>;
         };
-    };
-
-    keymap {
-        compatible = "zmk,keymap";
-
-        // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-
-        base_layer {
-            // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-
-            label = "BASE";
-
-            // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-            // ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
-            // ┃     Q     ┃     W     ┃     E     ┃     R     ┃     T     ┃   ┃     Y     ┃     U     ┃     I     ┃     O     ┃     P     ┃
-            // ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-            // ┃     A     ┃     S     ┃     D     ┃     F     ┃     G     ┃   ┃     H     ┃     J     ┃     K     ┃     L     ┃     ;     ┃
-            // ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-            // ┃     Z     ┃     X     ┃     C     ┃     V     ┃     B     ┃   ┃     N     ┃     M     ┃     ,     ┃     .     ┃     /     ┃
-            // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
-            //                                     ┃    TAB    ┃    SPC    ┃   ┃   ENTER   ┃   BSPC    ┃
-            //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┛
-
-            bindings = <
-&kp Q        &kp W        &kp E         &kp R         &kp T          &kp Y             &kp U             &kp I         &kp O        &kp P
-&gqt LGUI A  &gqt LALT S  &gqt LCTRL D  &gqt LSHFT F  &kp G          &kp H             &gqt RSHFT J      &gqt RCTRL K  &gqt RALT L  &gqt RGUI SEMI
-&kp Z        &kp X        &kp C         &kp V         &kp B          &kp N             &kp M             &kp COMMA     &kp DOT      &kp FSLH
-                                        &ltq 1 SPACE  &tab_esc_ctrl  &mt LSHIFT ENTER  &ltq 2 BACKSPACE
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
+        combo_UNDER {
+            timeout-ms = <50>;
+            key-positions = <21 28>;
+            bindings = <&kp UNDER>;
         };
-
-        // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-
-        nav_layer {
-            // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-
-            label = "NAVI";
-
-            // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-            // ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
-            // ┃           ┃           ┃     UP    ┃           ┃     {     ┃   ┃     }     ┃     7     ┃     8     ┃     9     ┃     +     ┃
-            // ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-            // ┃   SHIFT   ┃   LEFT    ┃    DOWN   ┃   RIGHT   ┃     [     ┃   ┃     ]     ┃     4     ┃     5     ┃     6     ┃     -     ┃
-            // ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-            // ┃           ┃   P UP    ┃  C LOCK   ┃  P DOWN   ┃     (     ┃   ┃     )     ┃     1     ┃     2     ┃     3     ┃     *     ┃
-            // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
-            //                                     ┃           ┃           ┃   ┃    DEL    ┃     0     ┃  
-            //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┛
-
-            bindings = <
-&kp N1  &kp N2  &kp N3  &kp N4  &kp N5    &kp N6    &kp N7    &kp N8     &kp N9     &kp N0
-&kp F1  &kp F2  &kp F3  &kp F4  &kp F5    &kp LEFT  &kp DOWN  &kp UP     &kp RIGHT  &kp F11
-&kp F6  &kp F7  &kp F8  &kp F9  &kp F10   &kp HOME  &kp END   &kp PG_UP  &kp PG_DN  &kp F12
-                        &trans  &kp CAPS  &kp DEL   &mo 3
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
+        combo_MINUS {
+            timeout-ms = <50>;
+            key-positions = <22 27>;
+            bindings = <&kp MINUS>;
         };
-
-        // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-
-        sym_layer {
-            // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-
-            label = "SYM";
-
-            // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-            // ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
-            // ┃     !     ┃     @     ┃     #     ┃     $     ┃     %     ┃   ┃     ˆ     ┃     &     ┃     Ü     ┃     '     ┃     "     ┃
-            // ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-            // ┃     Ä     ┃           ┃    SZ     ┃           ┃           ┃   ┃   MUTE    ┃   YEN     ┃   EURO    ┃  POUND    ┃     Ö     ┃
-            // ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-            // ┃  EMAIL1   ┃  EMAIL2   ┃           ┃           ┃           ┃   ┃   VOL-    ┃   VOL+    ┃   LAST    ┃   NEXT    ┃     \     ┃
-            // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
-            //                                     ┃    GIF    ┃  ADJUST   ┃   ┃           ┃   PLAY    ┃   
-            //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┛
-
-            bindings = <
-&kp EXCL  &kp AT  &kp HASH  &kp DLLR           &kp PRCNT     &kp CARET  &kp AMPS       &kp STAR        &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
-&kp TAB   &none   &none     &kp SQT            &kp GRAVE     &kp MINUS  &kp EQUAL      &kp LBKT        &kp RIGHT_BRACKET     &kp BSLH
-&none     &none   &none     &kp DOUBLE_QUOTES  &kp TILDE     &kp UNDER  &kp PLUS       &kp LEFT_BRACE  &kp RIGHT_BRACE       &kp PIPE
-                            &mo 3              &kp LEFT_ALT  &kp DEL    &kp BACKSPACE
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
+        space {
+            timeout-ms = <50>;
+            key-positions = <13 23>;
+            bindings = <&kp SPACE>;
         };
-
-        // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-
-        adjust_layer {
-            // ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-
-            label = "ADJ";
-
-            // ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-            // ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓   ┏━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
-            // ┃   RESET   ┃ BT CLEAR  ┃  OUT TOG  ┃           ┃           ┃   ┃           ┃    F7     ┃    F8     ┃    F9     ┃    F12    ┃
-            // ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-            // ┃ BOOTLOAD  ┃ BT NEXT   ┃           ┃           ┃           ┃   ┃           ┃    F4     ┃    F5     ┃    F6     ┃    F11    ┃
-            // ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫
-            // ┃           ┃ BT PREV   ┃           ┃           ┃           ┃   ┃           ┃    F1     ┃    F2     ┃    F3     ┃    F10    ┃
-            // ┗━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┫   ┣━━━━━━━━━━━╋━━━━━━━━━━━╋━━━━━━━━━━━┻━━━━━━━━━━━┻━━━━━━━━━━━┛
-            //                                     ┃           ┃           ┃   ┃           ┃           ┃
-            //                                     ┗━━━━━━━━━━━┻━━━━━━━━━━━┛   ┗━━━━━━━━━━━┻━━━━━━━━━━━┛
-
-            bindings = <
-&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &none            &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp BSPC
-&none         &none         &none         &bt BT_CLR    &out OUT_TOG  &kp KP_DOT       &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &none
-&none         &none         &none         &none         &none         &kp KP_NUMBER_0  &kp KP_N1        &kp KP_NUMBER_2  &kp KP_NUMBER_3  &none
-                                          &none         &none         &none            &none
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
+        return {
+            timeout-ms = <50>;
+            key-positions = <14 24>;
+            bindings = <&kp RET>;
         };
+   };
+   behaviors {
+         hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HOMEROW_MODS";
+            #binding-cells = <2>;
+            tapping-term-ms = <220>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+        td: tapdance {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TAPDANCE";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick_tap_ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+   };
 
-        // ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
-    };
+       keymap {
+                compatible = "zmk,keymap";
+
+                Work {
+                        bindings = <
+       &td EXCL Q       &td AT W     &td HASH F      &td DLLR P            &td PRCNT B         &td CARET J   &td AMPS L    &td STAR U     &td LPAR Y    &td RPAR SQT
+       &lt 1 A          &hm LCTRL R  &hm LALT S      &hm LGUI T            &hm LSHFT G         &hm RSHIFT M  &hm RGUI N    &hm RALT E     &hm RCTRL I   &lt 1 O
+       &kp Z            &td LG(X) X  &td LG(C) C     &kp D                 &td LG(V) V         &kp K         &kp H         &kp COMMA      &kp DOT       &kp FSLH
+                                                     &lt 3 TAB             &lt 2 SPACE       &lt 4 RET     &td RA(BSPC) BSPC
+                        >;
+                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+                };
+                Arrows {
+                        bindings = <
+       &td F11 F1        &td F12 F2           &td F13 F3        &td F14 F4       &td F15 F5         &td F16 F6         &td F17 F7         &td F18 F8       &td F19 F9           &td F20 F10
+       &trans            &kp LA(BSPC)         &kp BSPC          &kp LBKT         &kp RBKT           &td RG(LEFT) LEFT  &td PG_UP UP       &td PG_DN DOWN   &td RG(RIGHT) RIGHT  &trans
+       &none             &kp LG(LS(LC(N4)))   &kp LG(LS(N5))    &kp LBRC         &kp RBRC           &kp RA(LEFT)       &td PLUS EQUAL     &td RA(DEL) DEL  &kp RA(RIGHT)        &none
+                                                                &td GRAVE TILDE  &td BSLH PIPE      &kp RET            &td RA(BSPC) BSPC 
+                        >;
+                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+                };
+            
+                Numbers {
+                        bindings = <
+       &td KP_N6 KP_N1  &td KP_N7 KP_N2      &td KP_N8 KP_N3    &td KP_N9 KP_N4       &td KP_N0 KP_N5       &kp PLUS   &kp KP_N7   &kp KP_N8     &kp KP_N9  &kp BSPC
+       &sk LGUI         &mkp MB3             &td LS(UP) UP      &td LA(V) LA(H)       &mkp MB1              &kp MINUS  &kp KP_N4   &kp KP_N5     &kp KP_N6  &kp DOT
+       &sk LSHFT        &td LS(LEFT) LEFT    &td LS(DOWN) DOWN  &td LS(RIGHT) RIGHT   &mkp MB2              &kp STAR   &kp KP_N1   &kp KP_N2     &kp KP_N3  &kp FSLH
+                                                          &none                 &trans                &kp RET    &kp KP_N0
+                        >;
+                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+                };
+
+		Devices {
+			bindings = <
+        &none          &none       &none      &none       &bt BT_CLR           &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2    &bt BT_SEL 3     &bt BT_SEL 4
+        &none          &none       &none      &none       &none                &none          &kp C_PWR      &none           &none            &none
+        &bootloader    &none      &none      &none       &none                &kp C_MUTE     &kp C_PP       &none           &none            &bootloader
+                                            &trans       &none                   &kp C_VOL_UP   &kp C_VOLUME_DOWN
+			>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+		};
+
+        Left {
+			bindings = <
+        &kp BSPC     &kp KP_N7       &kp KP_N8      &kp KP_N9     &kp PLUS         &none   &none  &none  &none   &none
+        &kp FSLH     &kp KP_N4       &kp KP_N5      &kp KP_N6     &kp MINUS        &none   &none  &none  &none   &none
+        &kp DOT      &kp KP_N1       &kp KP_N2      &kp KP_N3     &kp STAR         &none   &none  &none  &none   &none
+                                                    &kp KP_N0     &kp RET          &trans   &none
+			>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+		};
+     };
 };
