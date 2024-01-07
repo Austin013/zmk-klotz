@@ -170,7 +170,7 @@
                         bindings = <
        &td EXCL Q       &td AT W     &td HASH F      &td DLLR P            &td PRCNT B         &td CARET J   &td AMPS L    &td STAR U     &td LPAR Y    &td RPAR SQT
        &lt 1 A          &hm LCTRL R  &hm LALT S      &hm LGUI T            &hm LSHFT G         &hm RSHIFT M  &hm RGUI N    &hm RALT E     &hm RCTRL I   &lt 1 O
-       &kp Z            &td LG(X) X  &td LG(C) C     &kp LG(D) D           &td LG(V) V         &td CAPS K    &kp H    &td LESS_THAN COMMA   &td GREATER_THAN DOT    &td QMARK FSLH
+       &kp Z            &td LG(X) X  &td LG(C) C     &td LG(D) D           &td LG(V) V         &td CAPS K    &kp H         &td LESS_THAN COMMA   &td GREATER_THAN DOT    &td QMARK FSLH
                                                      &lt 3 TAB             &lt 2 SPACE         &lt 4 RET     &td RA(BSPC) BSPC
                         >;
                         sensor-bindings = <&inc_dec_kp LG(LA(RIGHT)) LG(LA(LEFT)) &inc_dec_kp LC(RIGHT) LC(LEFT)>;
@@ -192,7 +192,7 @@
        &sk LSHFT        &td LS(LEFT) LEFT    &td LS(DOWN) DOWN  &td LS(RIGHT) RIGHT   &none                 &kp STAR   &kp KP_N1   &kp KP_N2     &kp KP_N3  &kp FSLH
                                                           &none                 &trans                      &kp RET    &kp KP_N0
                         >;
-                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp LG(RBKT) LG(LBKT)>;
+                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp TAB TAB>;
                 };
 
 		Devices {
