@@ -31,15 +31,15 @@
             key-positions = <1 2>;
             bindings = <&kp ESC>;   
         };
-        tab_left {
-            timeout-ms = <30>;
-            key-positions = <23 24>;
-            bindings = <&kp LG(LA(LEFT))>;
-        };
         tab_right {
             timeout-ms = <30>;
-            key-positions = <21 22>;
+            key-positions = <23 24>;
             bindings = <&kp LG(LA(RIGHT))>;
+        };
+        tab_left {
+            timeout-ms = <30>;
+            key-positions = <21 22>;
+            bindings = <&kp LG(LA(LEFT))>;
         };
         numpad_left {
             timeout-ms = <30>;
