@@ -27,20 +27,15 @@
 / { 
     combos {
         compatible = "zmk,combos";
-        caps {
-            timeout-ms = <30>;
-            key-positions = <14 15>;
-            bindings = <&kp CAPS>;
-        };
         esc {
             timeout-ms = <30>;
             key-positions = <1 2>;
-            bindings = <&kp ESC>;    
+            bindings = <&kp ESC>;   
         };
         numpad_left {
             timeout-ms = <30>;
             key-positions = <1 2 3>;
-            bindings = <&to 4>;    
+            bindings = <&to 4>;
         };
         default {
             timeout-ms = <30>;
@@ -92,16 +87,6 @@
             key-positions = <12 13>;
             bindings = <&kp LG(Z)>;
         };
-        win_left {
-            timeout-ms = <50>;
-            key-positions = <13 14>;
-            bindings = <&kp LC(RIGHT)>;
-        };
-        win_right {
-            timeout-ms = <50>;
-            key-positions = <15 16>;
-            bindings = <&kp LC(LEFT)>;
-        };
         spotlight {
             timeout-ms = <30>;
             key-positions = <2 7>;
@@ -117,11 +102,6 @@
             key-positions = <11 18>;
             bindings = <&kp SEMI>;
         };
-        combo_MoveToLeftTab {
-            timeout-ms = <50>;
-            key-positions = <21 22>;
-            bindings = <&kp LG(LA(LEFT))>;
-        };
         app_swap {
             timeout-ms = <30>;
             key-positions = <22 23>;
@@ -131,11 +111,6 @@
             timeout-ms = <30>;
             key-positions = <21 22 23>;
             bindings = <&kp LG(GRAVE)>;
-        };
-	    combo_MoveToRightTab {
-            timeout-ms = <50>;
-            key-positions = <23 24>;
-            bindings = <&kp LG(LA(RIGHT))>;
         };
 	    combo_HOME {
             timeout-ms = <50>;
@@ -196,10 +171,10 @@
                         bindings = <
        &td EXCL Q       &td AT W     &td HASH F      &td DLLR P            &td PRCNT B         &td CARET J   &td AMPS L    &td STAR U     &td LPAR Y    &td RPAR SQT
        &lt 1 A          &hm LCTRL R  &hm LALT S      &hm LGUI T            &hm LSHFT G         &hm RSHIFT M  &hm RGUI N    &hm RALT E     &hm RCTRL I   &lt 1 O
-       &kp Z            &td LG(X) X  &td LG(C) C     &kp D                 &td LG(V) V         &kp K         &kp H         &kp COMMA      &kp DOT       &kp FSLH
+       &kp Z            &td LG(X) X  &td LG(C) C     &kp D                 &td LG(V) V         &td CAPS K         &kp H         &kp COMMA      &kp DOT       &kp FSLH
                                                      &lt 3 TAB             &lt 2 SPACE       &lt 4 RET     &td RA(BSPC) BSPC
                         >;
-                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
+                        sensor-bindings = <&inc_dec_kp LG(LA(RIGHT)) LG(LA(LEFT)) &inc_dec_kp LC(RIGHT) LC(LEFT)>;
                 };
                 Arrows {
                         bindings = <
@@ -208,7 +183,7 @@
        &none             &kp LG(LS(LC(N4)))   &kp LG(LS(N5))    &kp LBRC         &kp RBRC           &kp RA(LEFT)       &td PLUS EQUAL     &td RA(DEL) DEL  &kp RA(RIGHT)        &none
                                                                 &td GRAVE TILDE  &td BSLH PIPE      &kp RET            &td RA(BSPC) BSPC 
                         >;
-                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
+                            sensor-bindings = <&inc_dec_kp RS(UP) RS(DOWN) &inc_dec_kp RS(RIGHT) RS(LEFT)>;
                 };
             
                 Numbers {
@@ -218,15 +193,15 @@
        &sk LSHFT        &td LS(LEFT) LEFT    &td LS(DOWN) DOWN  &td LS(RIGHT) RIGHT   &none                 &kp STAR   &kp KP_N1   &kp KP_N2     &kp KP_N3  &kp FSLH
                                                           &none                 &trans                      &kp RET    &kp KP_N0
                         >;
-                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
+                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp <&kp LG(RBKT) <&kp LG(LBKT)>;
                 };
 
 		Devices {
 			bindings = <
         &none          &none       &none      &none       &bt BT_CLR           &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2    &bt BT_SEL 3     &bt BT_SEL 4
         &none          &none       &none      &none       &none                &none          &kp C_PWR      &none           &none            &none
-        &bootloader    &none      &none      &none       &none                &kp C_MUTE     &kp C_PP       &none           &none            &bootloader
-                                            &trans       &none                   &kp C_VOL_UP   &kp C_VOLUME_DOWN
+        &bootloader    &none      &none      &none       &none                &kp C_PREV     &kp C_NEXT       &none           &none            &bootloader
+                                            &trans       &none                   &kp C_MUTE   &kp C_PP
 			>;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
 		};
