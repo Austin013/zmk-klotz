@@ -62,12 +62,12 @@
             bindings = <&kp LG(LS(J))>;
         };
         nihongo {
-            timeout-ms = <30>;
+            timeout-ms = <25>;
             key-positions = <7 8>;
             bindings = <&kp LANG1>;
         };
         english {
-            timeout-ms = <30>;
+            timeout-ms = <25>;
             key-positions = <17 18>;
             bindings = <&kp LANG2>;
         };
@@ -122,12 +122,12 @@
             bindings = <&kp LG(GRAVE)>;
         };
 	    combo_HOME {
-            timeout-ms = <30>;
-            key-positions = <26 27>;
+            timeout-ms = <25>;
+            kuy-positions = <26 27>;
             bindings = <&kp HOME>;
         };
 	    combo_END {
-            timeout-ms = <30>;
+            timeout-ms = <25>;
             key-positions = <27 28>;
             bindings = <&kp END>;
         };
@@ -192,7 +192,7 @@
        &none             &kp LG(LS(LC(N4)))   &kp LG(LS(N5))    &kp LBRC         &kp RBRC           &kp RA(LEFT)       &td PLUS EQUAL     &td RA(DEL) DEL  &kp RA(RIGHT)        &none
                                                                 &td GRAVE TILDE  &td BSLH PIPE      &kp RET            &td RA(BSPC) BSPC 
                         >;
-                                    sensor-bindings = <&inc_dec_kp LG(LA(RIGHT)) LG(LA(LEFT)) &inc_dec_kp TAB TAB>;
+                                    sensor-bindings = <&inc_dec_kp RIGHT LEFT &inc_dec_kp LG(LA(RIGHT)) LG(LA(LEFT))>;
                         };
                     
                 Numbers {
@@ -202,7 +202,7 @@
        &sk LSHFT        &td LS(LEFT) LEFT    &td LS(DOWN) DOWN  &td LS(RIGHT) RIGHT   &none                 &kp STAR   &kp KP_N1   &kp KP_N2     &kp KP_N3  &kp FSLH
                                                           &none                 &trans                      &kp RET    &kp KP_N0
                         >;
-                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp RC(RIGHT) RC(LEFT)>;
+                        sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp TAB TAB>;
                 };
 
 		Devices {
