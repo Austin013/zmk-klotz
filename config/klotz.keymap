@@ -123,7 +123,7 @@
         };
 	    combo_HOME {
             timeout-ms = <25>;
-            kuy-positions = <26 27>;
+            key-positions = <26 27>;
             bindings = <&kp HOME>;
         };
 	    combo_END {
