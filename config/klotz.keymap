@@ -71,6 +71,11 @@
             key-positions = <17 18>;
             bindings = <&kp LANG2>;
         };
+	chinese {
+            timeout-ms = <25>;
+            key-positions = <8 9>;
+            bindings = <&kp LANG3>;
+        };
         apps {
             timeout-ms = <50>;
             key-positions = <3 6>;
