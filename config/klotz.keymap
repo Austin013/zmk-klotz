@@ -28,7 +28,7 @@
         compatible = "zmk,combos";
         esc {
             timeout-ms = <30>;
-            key-positions = <1 2>;
+            key-positions = <2 3>;
             bindings = <&kp ESC>;   
         };
         tab_right {
@@ -40,16 +40,6 @@
             timeout-ms = <30>;
             key-positions = <21 22>;
             bindings = <&kp LG(LA(LEFT))>;
-        };
-        numpad_left {
-            timeout-ms = <30>;
-            key-positions = <1 2 3>;
-            bindings = <&to 4>;
-        };
-        default {
-            timeout-ms = <30>;
-            key-positions = <1 3>;
-            bindings = <&to 0>;    
         };
         clicking {
             timeout-ms = <50>;
@@ -63,18 +53,13 @@
         };
         nihongo {
             timeout-ms = <25>;
-            key-positions = <16 18>;
+            key-positions = <1 2>;
             bindings = <&kp LANG1>;
         };
         english {
             timeout-ms = <25>;
             key-positions = <17 18>;
             bindings = <&kp LANG2>;
-        };
-        apps {
-            timeout-ms = <50>;
-            key-positions = <3 6>;
-            bindings = <&kp LC(UP)>;
         };
         windows {
             timeout-ms = <50>;
