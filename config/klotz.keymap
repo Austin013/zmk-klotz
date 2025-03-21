@@ -88,7 +88,7 @@
         };
         combo_undo {
             timeout-ms = <30>;
-            key-positions = <12 13>;
+            key-positions = <21 23>;
             bindings = <&kp LG(Z)>;
         };
         spotlight {
