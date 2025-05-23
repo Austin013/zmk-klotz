@@ -202,10 +202,10 @@
 
 		Devices {
 			bindings = <
-        &none          &none       &none      &none       &bt BT_CLR           &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2    &bt BT_SEL 3     &bt BT_SEL 4
-        &none          &none       &none      &none       &none                &none          &kp C_PWR      &none           &none            &none
-        &bootloader    &none      &none      &none       &none                &kp C_PREV     &kp C_NEXT       &none           &none            &bootloader
-                                            &trans       &none                   &kp C_MUTE   &kp C_PP
+        &kp LC(KP_N1)  &kp LC(KP_N2)    &kp LC(KP_N3)   &kp LC(KP_N4)    &kp LC(KP_N5)        &bt BT_SEL 0   &bt BT_SEL 1   &bt BT_SEL 2    &bt BT_SEL 3     &bt BT_SEL 4
+        &none          &none            &none           &none            &none                &none          &kp C_PWR      &none           &none            &none
+        &bootloader    &none            &none           &none            &none                &kp C_PREV     &kp C_NEXT       &none           &none            &bootloader
+                                                        &trans           &bt BT_CLR           &kp C_MUTE     &kp C_PP
 			>;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
 		};
