@@ -187,7 +187,7 @@
        &none             &kp LG(LS(LC(N4)))   &kp LG(LS(N5))    &kp LBRC         &kp RBRC           &kp RA(LEFT)       &td PLUS EQUAL     &td RA(DEL) DEL  &kp RA(RIGHT)        &none
                                                                 &td BSLH TILDE  &td PIPE GRAVE      &kp RET            &td RA(BSPC) BSPC 
                         >;
-                                    sensor-bindings = <&inc_dec_kp LG(LS(EQUAL)) LG(MINUS) &inc_dec_kp BSPC TAB)>;
+                                    sensor-bindings = <&inc_dec_kp LG(LS(EQUAL)) LG(MINUS) &inc_dec_kp BSPC TAB>;
                         };
                     
                 Numbers {
