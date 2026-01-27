@@ -134,7 +134,7 @@
 		hyper {
             timeout-ms = <50>;
             key-positions = <12 23>;
-            binding =  <&kp LG(LS(LA(LCTRL)))>;
+            bindings =  <&kp LG(LS(LA(LCTRL)))>;
         };
             };
    behaviors {
