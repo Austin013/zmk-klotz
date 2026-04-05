@@ -168,7 +168,7 @@
        &td LG(LS(LALT)) Z     &td LG(X) X  &td LG(C) C     &td LG(D) D         &td LG(V) V         &td CAPS K    &kp H         &kp COMMA      &kp DOT       &td QMARK FSLH
                                                          &lt 3 TAB             &lt 2 SPACE         &td TAB RET     &td RA(BSPC) BSPC
                         >;
-                        sensor-bindings = <&inc_dec_kp DOWN UP &inc_dec_kp RIGHT LEFT>;
+                        sensor-bindings = <&inc_dec_kp RIGHT LEFT UP &inc_dec_kp RIGHUP DOWN >;
                 };
                 Arrows {
                         bindings = <
